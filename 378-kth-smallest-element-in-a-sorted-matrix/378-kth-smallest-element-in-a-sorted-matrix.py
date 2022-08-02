@@ -8,12 +8,10 @@ class Solution:
                 else:
                     d[j] += 1
         del(matrix)
-        s = ''
+        s = []
         for i in d:
-            s += (str(i) + ' ') * d[i] 
-        s = s.split(' ')
-        s.pop()
-        s[:] = [int(d) for d in s]
+            for j in range(d[i]):
+                s.append(i)
         s.sort()
         print(s)
         return s[k - 1]
