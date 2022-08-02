@@ -12,6 +12,7 @@ class Solution:
         for i in d:
             for j in range(d[i]):
                 s.append(i)
+        del(d)
         s.sort()
         print(s)
         return s[k - 1]
