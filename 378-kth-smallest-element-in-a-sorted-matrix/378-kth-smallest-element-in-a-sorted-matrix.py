@@ -7,7 +7,7 @@ class Solution:
                     d[j] = 1
                 else:
                     d[j] += 1
-        del(matrix)
+
         s = []
         for i in d:
             for j in range(d[i]):
