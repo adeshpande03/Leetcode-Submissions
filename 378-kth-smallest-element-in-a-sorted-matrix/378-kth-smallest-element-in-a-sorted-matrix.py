@@ -7,12 +7,10 @@ class Solution:
                     d[j] = 1
                 else:
                     d[j] += 1
-
         s = []
         for i in d:
             for j in range(d[i]):
                 s.append(i)
-        del(d)
         s.sort()
         print(s)
         return s[k - 1]
