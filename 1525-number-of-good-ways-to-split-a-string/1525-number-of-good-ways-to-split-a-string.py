@@ -1,15 +1,13 @@
 class Solution:
     def numSplits(self, s: str) -> int:
-        left_count = collections.Counter()
-        right_count = collections.Counter(s)
-        res = 0
-        for c in s:
-            left_count[c] += 1
-            right_count[c] -= 1
-            if right_count[c] == 0:
-                del right_count[c]
-            
-            if len(left_count) == len(right_count):
-                res += 1
-                
-        return res
+        c = Counter(s)
+        d = Counter()
+        ans = 0
+        for i in s:
+            c[i] -= 1
+            d[i] += 1
+            if c[i] == 0:
+                del c[i]
+            if len(c) == len(d):
+                ans += 1
+        return ans
