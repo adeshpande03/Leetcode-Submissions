@@ -1,9 +1,16 @@
 class Solution:
-    def findAnagrams(self, s: str, p: str) -> List[int]:
-        p = sorted(p)
-        ans = []
-        for _ in range(len(s) - len(p) + 1):
-            if sorted(s[_:len(p) + _]) == p:
-                ans.append(_)
-        return ans
-        
+    def findAnagrams(self, s: str, p: str) -> List[int]: 
+        s_dict = collections.Counter(s[0:len(p)-1]) 
+        p_dict = collections.Counter(p)
+        start = 0
+        res = []
+        for i in range(len(p)-1, len(s)):
+            s_dict[s[i]] += 1
+            if s_dict == p_dict:
+                res.append(start)
+            s_dict[s[start]] -= 1
+            if s_dict[s[start]] == 0:
+                del s_dict[s[start]]
+            start += 1
+            
+        return res
