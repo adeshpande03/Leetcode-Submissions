@@ -9,6 +9,6 @@ impl Solution {
             f.push(firstSlice[x as usize]);
             f.push(secondSlice[x as usize]);
         }
-        return f;
+        f
     }
 }
