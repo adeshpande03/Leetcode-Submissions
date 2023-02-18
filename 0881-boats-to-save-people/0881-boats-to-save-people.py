@@ -6,11 +6,10 @@ class Solution:
         boats = 0
         
         while lp <= rp:
+            boats += 1
             if people[lp] + people[rp] > limit:
-                boats += 1
                 rp -=1
             else:
-                boats += 1
                 rp -= 1
                 lp += 1
         return boats
