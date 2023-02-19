@@ -18,5 +18,4 @@ class Solution:
         if rh - lh in [-1, 0, 1] and self.isBalanced(root.right) and self.isBalanced(root.left):
             return True
         return False
-        return height(root.left) - height(root.right) in [-1, 0, 1]
             
