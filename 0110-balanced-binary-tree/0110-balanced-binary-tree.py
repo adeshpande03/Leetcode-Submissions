@@ -12,7 +12,6 @@ class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
         if not root:
             return True
-        
         rh = self.height(root.right)
         lh = self.height(root.left)
         if rh - lh in [-1, 0, 1] and self.isBalanced(root.right) and self.isBalanced(root.left):
