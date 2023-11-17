@@ -9,6 +9,14 @@ class Solution:
                 s[i] = 0
         vowList.sort()
         ptr = 0
+        res = ''
+        for i in range(len(s)):
+            if s[i] == 0:
+                res += vowList[ptr]
+                ptr += 1
+            else:
+                res += s[i]
+        return res
         for i in range(len(s)):
             if s[i] == 0:
                 s[i] = vowList[ptr]
