@@ -25,8 +25,8 @@ class Solution:
             
         ans = 0
         for square in range(10):
-            ans = (ans + prev[square]) % MOD
-        return ans
+            ans = (ans + prev[square])
+        return ans % MOD
             
             
         
