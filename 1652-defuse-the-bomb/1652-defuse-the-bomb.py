@@ -12,6 +12,5 @@ class Solution:
             if k > 0:
                 ans[i] += sum(code[i+1: i + k + 1])
             else:
-                print(code[i + k : i])
                 ans[i - start] += sum(code[i + k : i])
         return ans
