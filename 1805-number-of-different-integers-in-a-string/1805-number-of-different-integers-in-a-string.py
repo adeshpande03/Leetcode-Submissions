@@ -6,4 +6,4 @@ class Solution:
                 l += " "
             else:
                 l += i
-        return (len(set((map(int, l.split())))))
+        return len(set(map(int, l.split())))
