@@ -8,6 +8,5 @@ class Solution:
             ans += 1
             if l <= 0:
                 break
-        print(c)
         return ans
         
