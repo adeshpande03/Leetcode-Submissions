@@ -4,9 +4,8 @@ class Solution:
         word_set = set(words)
 
         @cache
-        def dfs(s) -> bool:  # Return True if s is a concatenated word
+        def dfs(s) -> bool:
             for i in range(min_len, len(s)-min_len+1):
-                # Break s into s[:i] and s[i:]
                 if s[:i] in word_set and ((t := s[i:]) in word_set or dfs(t)):
                     return True
             return False
