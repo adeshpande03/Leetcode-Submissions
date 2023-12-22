@@ -1,18 +1,14 @@
 class Solution:
-    def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
-        words_set = set(words)
-        concatenated_words = []
-        for word in words:
-            if len(word) == 0:
-                continue
-            dp = [False] * (len(word) + 1)
-            dp[0] = True
-            for i in range(len(word)):
-                if not dp[i]:
-                    continue
-                for j in range(i+1, len(word) + 1):
-                    if j - i < len(word) and word[i:j] in words_set:
-                        dp[j] = True
-            if dp[-1]:
-                concatenated_words.append(word)
-        return concatenated_words
+    def findAllConcatenatedWordsInADict(self, words: List[str], mi = None) -> List[str]:
+        min_len = min(map(len, words))
+        word_set = set(words)
+
+        @cache
+        def dfs(s) -> bool:  # Return True if s is a concatenated word
+            for i in range(min_len, len(s)-min_len+1):
+                # Break s into s[:i] and s[i:]
+                if s[:i] in word_set and ((t := s[i:]) in word_set or dfs(t)):
+                    return True
+            return False
+
+        return [s for s in words if dfs(s)]
