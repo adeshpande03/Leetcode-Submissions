@@ -1,12 +1,12 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
         def sqr(num):
-            sum = 0
+            s = 0
             while num > 0:
                 r = num % 10
-                sum += r**2
+                s += r**2
                 num = num // 10
-            return sum
+            return s
         seen = set()
         while True:
             n = sqr(n)
