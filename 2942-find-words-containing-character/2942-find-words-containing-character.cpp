@@ -4,7 +4,7 @@ public:
         vector<int> y;
         for (int i = 0; i < words.size(); i++)
         {    
-            if( words[i].find(x) != string::npos )
+            if( words[i].find(x) != std::string::npos )
             {
                 y.push_back(i);
             }
