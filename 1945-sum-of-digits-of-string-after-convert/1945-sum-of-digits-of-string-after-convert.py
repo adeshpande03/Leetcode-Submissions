@@ -7,7 +7,6 @@ class Solution:
                 t += str(alp.index(i) + 1)
             return t
         s = c(s)
-        print(s)
         def r(s):
             g = 0
             for i in s:
