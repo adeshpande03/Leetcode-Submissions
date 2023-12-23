@@ -7,13 +7,13 @@ public:
         {
             if (i % m == 0)
             {
-                d += i;
+                d -= i;
             }
             else
             {
-                c += i;
+                d += i;
             }
         }
-        return c - d;
+        return d;
     }
 };
