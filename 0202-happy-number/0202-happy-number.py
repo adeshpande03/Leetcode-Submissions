@@ -8,7 +8,7 @@ class Solution:
                 num = num // 10
             return sum
         seen = set()
-        for i in range(70):
+        while True:
             n = sqr(n)
             if n in seen:
                 return False
