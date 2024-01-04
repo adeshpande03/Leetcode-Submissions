@@ -1,13 +1,13 @@
 class Solution:
     def minOperations(self, nums: List[int]) -> int:
-        def substract(value):
+        def s(value):
             if value == 2 or value == 3:
                 return 1
             if value == 4 :
                 return 2
             if value > 4:
-                return 1 + substract(value - 3)
+                return 1 + s(value - 3)
         
-        hashmap = Counter(nums)
+        c = Counter(nums)
         
-        return -1 if any([val == 1 for val in hashmap.values()]) else sum([substract(val) for val in hashmap.values()])
+        return -1 if any([val == 1 for val in c.values()]) else sum([s(val) for val in c.values()])
