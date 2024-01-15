@@ -1,10 +1,5 @@
 class Solution:
-    def calculateTime(self, keyboard: str, word: str) -> int:
-        il=[]
-        il[:0] = keyboard
-        ul = []
-        ul[:0] = word
-        
+    def calculateTime(self, il: str, ul: str) -> int:
         ind = 0
         c = 0
         for i in ul:
