@@ -1,9 +1,8 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        complement = {}
+        d = dict()
         for i in range(len(nums)):
-            if nums[i] in complement:
-                return (complement[nums[i]], i)
+            if nums[i] not in d:
+                d[target - nums[i]] = i
             else:
-                complement[target - nums[i]] = i
-        
+                return [i, d.get(nums[i])]
