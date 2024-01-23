@@ -1,13 +1,7 @@
 class Solution:
     def arrayRankTransform(self, arr: List[int]) -> List[int]:
-        store = {}
-        sort_arr = sorted(set(arr))
-
-        for i in range(len(sort_arr)):
-            store[sort_arr[i]] = i+1
-
+        sorted_arr = sorted(set(arr))
+        rank_dict = {value: index + 1 for index, value in enumerate(sorted_arr)}
         
-        for i in range(len(arr)):
-            arr[i] = store[arr[i]]
-        
-        return arr
+        result = [rank_dict[num] for num in arr]
+        return result
