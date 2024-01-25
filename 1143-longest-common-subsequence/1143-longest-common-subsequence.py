@@ -1,24 +1,18 @@
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        m, n = len(text1), len(text2)
-        memo = [[-1] * (n + 1) for _ in range(m + 1)]
-        return self.lcs_memo(text1, text2, m, n, memo)
-
-    def lcs_memo(
-        self, text1: str, text2: str, m: int, n: int, memo: List[List[int]]
-    ) -> int:
-        if m == 0 or n == 0:
+        common = list(set(text1) & set(text2))
+        if len(common) == 0:
             return 0
-
-        if memo[m][n] != -1:
-            return memo[m][n]
-
-        if text1[m - 1] == text2[n - 1]:
-            memo[m][n] = 1 + self.lcs_memo(text1, text2, m - 1, n - 1, memo)
-        else:
-            memo[m][n] = max(
-                self.lcs_memo(text1, text2, m - 1, n, memo),
-                self.lcs_memo(text1, text2, m, n - 1, memo),
-            )
-
-        return memo[m][n]
+        text1 = [c for c in text1 if c in common]
+        text2 = [c for c in text2 if c in common]
+        if len(text1) > len(text2):
+            text1, text2 = text2, text1
+        dynamic = [0 for i in text1]
+        for c in text2:
+            count = 0
+            for i in range(len(text1)):
+                if count < dynamic[i]:
+                    count = dynamic[i]
+                elif c == text1[i]:
+                    dynamic[i] = count + 1
+        return max(dynamic)
