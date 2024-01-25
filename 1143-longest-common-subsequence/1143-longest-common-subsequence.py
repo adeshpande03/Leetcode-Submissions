@@ -1,6 +1,6 @@
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        common = list(set(text1) & set(text2))
+        common = (set(text1) & set(text2))
         if len(common) == 0:
             return 0
         text1 = [c for c in text1 if c in common]
