@@ -18,7 +18,7 @@ class MyQueue:
         return self.il[0]
 
     def empty(self) -> bool:
-        return True if len(self.il) == 0 else False
+        return len(self.il) == 0
         
 
 
