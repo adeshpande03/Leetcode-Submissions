@@ -5,7 +5,7 @@ class Solution:
             return []
         for i in range(len(s) - 1):
             c = s[i: i + 2]
-            if '++' in c:
+            if '++' == c:
                 ans.append(s[:i] + '--' + s[i + 2:])
         return ans
                 
