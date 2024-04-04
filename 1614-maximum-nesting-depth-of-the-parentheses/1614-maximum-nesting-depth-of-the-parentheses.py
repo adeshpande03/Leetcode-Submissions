@@ -5,7 +5,7 @@ class Solution:
         for i in s:
             if i == '(':
                 t += 1
+                m = max(t, m)
             if i == ')':
                 t -= 1
-            m = max(t, m)
         return m
