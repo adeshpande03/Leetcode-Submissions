@@ -1,33 +1,24 @@
 class Solution:
     def longestIdealString(self, s: str, k: int) -> int:
-        length = len(s)
+        l = [0] * 128
+        for c in s:
+            i = ord(c)
+            l[i] = max(l[i - k : i + k + 1]) + 1
+        return max(l)
+'''
+        n=len(s)
+        l=[0]*26
+        res=0
 
-        # Initialize all dp values to -1 to indicate non-visited states
-        dp = [[-1] * 26 for _ in range(length)]
+        for i in range(n):
+            y=ord(s[i])-ord('a')
+            l[y]+=1
+            for j in range(max(y-k,0),min(25,y+k)+1):
+                if y!=j:
+                    l[y]=max(l[y],1+l[j]) 
+            res=max(res,l[y])
+            
+        return res
+        '''
 
-        def dfs(index: int, char: int, dp: list, string: str, k: int) -> int:
-            # Memoized value
-            if dp[index][char] != -1:
-                return dp[index][char]
-
-            # State is not visited yet
-            dp[index][char] = 0
-            match = char == (ord(string[index]) - ord('a'))
-            if match:
-                dp[index][char] = 1
-
-            # Non-base case handling
-            if index > 0:
-                dp[index][char] = dfs(index - 1, char, dp, string, k)
-                if match:
-                    for prev_char in range(26):
-                        if abs(char - prev_char) <= k:
-                            dp[index][char] = max(dp[index][char], dfs(index - 1, prev_char, dp, string, k) + 1)
-            return dp[index][char]
-
-        # Find the maximum dp[N-1][char] and return the result
-        max_length = 0
-        for char in range(26):
-            max_length = max(max_length, dfs(length - 1, char, dp, s, k))
-        return max_length
         
