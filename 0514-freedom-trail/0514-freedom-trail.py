@@ -7,7 +7,7 @@ class Solution:
         for i, ch in enumerate(ring):
             d[ch].append(i)
 
-        @lru_cache(None)
+        @cache
         def dfs(curr=0, next=0):
 
             if next >= kLen:
