@@ -7,10 +7,10 @@
 class Solution:
     def evaluateTree(self, root: Optional[TreeNode]) -> bool:
         def evaluateTree(node):
-            if node.val in [1, 0]:
-                return node.val
             if node.val == 2:
                 return evaluateTree(node.left) or evaluateTree(node.right)
-            else:
+            elif node.val == 3:
                 return evaluateTree(node.left) and evaluateTree(node.right)
+            else:
+                return node.val
         return evaluateTree(root)
