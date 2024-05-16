@@ -9,7 +9,6 @@ class Solution:
         def evaluateTree(node):
             if node.val in [1, 0]:
                 return node.val
-              
             if node.val == 2:
                 return evaluateTree(node.left) or evaluateTree(node.right)
             else:
