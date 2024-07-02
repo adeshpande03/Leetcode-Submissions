@@ -1,9 +1,3 @@
 class Solution:
-    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        il = []
-        for i in nums1:
-            if i in nums2:
-                il.append(i)
-                nums2.remove(i)
-        return il
-        
+    def intersect(self, a: List[int], b: List[int]) -> List[int]:
+        return [d for d in a if d in b]
