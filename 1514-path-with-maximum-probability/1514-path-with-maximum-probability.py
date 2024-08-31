@@ -1,25 +1,22 @@
-class Solution:
-    def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start_node: int, end_node: int) -> float:
-        dist = [-float('inf')] * n # Array for distances
-        adj = defaultdict(list) # Adjacency matrix
+class Solution(object):
+    def maxProbability(self, n, edges, succProb, start, end):
+        adj = defaultdict(list)
+        sz = len(edges)
+        for i in range(sz):
+            u, v, cost = edges[i][0], edges[i][1], succProb[i]
+            adj[u].append((cost, v))
+            adj[v].append((cost, u))
 
-        for i, edge in enumerate(edges):
-            u, v = edge
-            adj[u].append((v, succProb[i]))
-            adj[v].append((u, succProb[i]))
-        
-        pq = [(-1, start_node)] # Max Heap - Start at start_node 
-        dist[start_node] = 0  # Distance from start_node to itself
-
-        while pq:
-            prob, node = heapq.heappop(pq)
-            prob = -prob
-            if node == end_node: # If we found end_node
-                return prob
-            for neighbor, cost in adj[node]:
-                newProb = prob * cost # Multiply for the new probability
-                if newProb > dist[neighbor]: # Only add to the heap if new distance is greater than previous
-                    dist[neighbor] = newProb
-                    heapq.heappush(pq, (-newProb, neighbor))
-        
-        return 0 # If no path from start_node to end_node
+        maxHeap = [(-1.0, start)] # Using negative because heapq is a min-heap by default
+        Prob = [0.0] * n
+        Prob[start] = 1.0
+        while maxHeap:
+            cost, node = heapq.heappop(maxHeap)
+            cost = -cost # Convert back to positive
+            if node  == end: return cost
+            for ccost, cnode in adj[node]:
+                newcost = ccost * cost
+                if newcost > Prob[cnode]:
+                    Prob[cnode] = newcost
+                    heapq.heappush(maxHeap, (-newcost, cnode)) # Push negative for max-heap behavior
+        return 0.0
