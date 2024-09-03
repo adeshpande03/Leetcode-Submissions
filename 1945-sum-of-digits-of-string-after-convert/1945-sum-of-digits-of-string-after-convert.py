@@ -1,6 +1,5 @@
 class Solution:
     def getLucky(self, s: str, k: int) -> int:
-        alp = 'abcdefghijklmnopqrstuvwxyz'
         def c(s):
             t = ''
             for i in s:
