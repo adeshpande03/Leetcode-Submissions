@@ -4,7 +4,7 @@ class Solution:
         def c(s):
             t = ''
             for i in s:
-                t += str(alp.index(i) + 1)
+                t += str(ord(i) - 96)
             return t
         s = c(s)
         def r(s):
